@@ -55,6 +55,9 @@ function menuItemClicked(id) {
     } else if (id === 7) {
         globalScope.centerFocus(false);
     }
+    else if (id === 8) {
+        redo();
+    }
 }
 
 function setupUI() {
@@ -105,7 +108,10 @@ function setupUI() {
     });
     // var dummyCounter=0;
 
-
+    //Load Shortcuts
+    if(JSON.parse(localStorage.getItem('mapping'))!=null){
+      keyboardMapping = JSON.parse(localStorage.getItem('mapping'));
+    }
     $('.logixModules').hover(function () {
         // Tooltip can be statically defined in the prototype.
         var tooltipText = window[this.id].prototype.tooltipText;
