@@ -160,6 +160,7 @@ SubCircuit.prototype.reBuild = function() {
     return;
     new SubCircuit(x = this.x, y = this.y, scope = this.scope, this.id)
     this.scope.backups = []; // Because all previous states are invalid now
+    //this.scope.foreups = []; // Because all ahead states are invalid now
     this.delete();
     showMessage("Subcircuit: " + subcircuitScope.name + " has been reloaded.")
 }
