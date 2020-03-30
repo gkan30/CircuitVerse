@@ -152,6 +152,111 @@ function generateSvg() {
 
 }
 
+preferencesWindow = function(scope = globalScope) {
+    updateWindow = function(){
+      var skey;
+      var key;
+      var documentElement = keyboardMapping[document.getElementById("shortcut").value];
+
+      if(documentElement["ctrl"] == true && documentElement["shift"] == false){
+        skey = 0;
+      }else if(documentElement["ctrl"] == false && documentElement["shift"] == true){
+        skey = 1;
+      }else if(documentElement["ctrl"] == true && documentElement["shift"] == true){
+        skey = 2;
+      }else{
+        skey = 3;
+      }
+        document.getElementById("special-key").selectedIndex = skey;
+        document.getElementById("regular-key").value = documentElement["key"];
+    };
+
+    updateWindow();
+    $('#preferences').dialog({
+        width: "auto",
+        buttons: [{
+            text: "Save",
+            click: function() {
+                $(this).dialog("close");
+                localStorage.setItem('Theme',$('input[name=colorScheme]:checked').val());
+                localStorage.setItem('mapping',JSON.stringify(keyboardMapping));
+            },
+        }]
+
+    });
+
+      $("select[name=mapping]").change(function(){
+        updateWindow();
+
+      });
+
+
+
+      $("select[name=key2]").change(function(){
+          var documentElement = keyboardMapping[document.getElementById("shortcut").value];
+          documentElement["key"] = document.getElementById("regular-key").value;
+
+      });
+
+      $("select[name=key1]").change(function(){
+
+        var skey = document.getElementById("special-key").selectedIndex;
+        var documentElement = keyboardMapping[document.getElementById("shortcut").value];
+        if(skey=="0"){
+          documentElement["ctrl"] = true;
+          documentElement["shift"] = false;
+        }
+        if(skey=="1"){
+          documentElement["ctrl"] = false;
+          documentElement["shift"] = true;
+        }
+        if(skey=="2"){
+          documentElement["ctrl"] = true;
+          documentElement["shift"] = true;
+        }
+        if(skey=="3"){
+          documentElement["ctrl"] = false;
+          documentElement["shift"] = false;
+        }
+      });
+
+
+    $("input[name=colorScheme]").change(function() {
+       var colorScheme = $('input[name=colorScheme]:checked').val();
+       setTheme(colorScheme);
+       dots(true,false,true);
+
+
+   });
+
+}
+
+setTheme = function(colorScheme=Theme){
+  Theme = colorScheme;
+  var root = document.documentElement;
+
+  if(Theme == 1){
+    document.getElementById("Theme1").checked = true;
+    root.style.setProperty('--backgroundColor1', '#333');
+    root.style.setProperty('--backgroundColor2', '#444');
+    root.style.setProperty('--hoverColor', '#0099ff');
+    root.style.setProperty('--borderColor', '#0099ff');
+    root.style.setProperty('--titleColor', '#0099ff');
+    root.style.setProperty('--navbarColor', '#343A40');
+}else if(Theme ==2){
+  document.getElementById("Theme2").checked = true;
+  root.style.setProperty('--backgroundColor1', '#212121');
+  root.style.setProperty('--backgroundColor2', '#161616');
+  root.style.setProperty('--hoverColor', '#313131');
+  root.style.setProperty('--borderColor', '#161616');
+  root.style.setProperty('--titleColor', '#fff');
+  root.style.setProperty('--navbarColor', '#161616');
+}
+
+
+  //root.style.setProperty('--backgroundColor1', '#fff');
+}
+
 // Function used to change the current focusedCircuit
 // Disables layoutMode if enabled
 // Changes UI tab etc
@@ -201,6 +306,7 @@ function downloadAsImg(name, imgType) {
 function undo(scope = globalScope) {
     if(layoutMode)return;
     if (scope.backups.length == 0) return;
+    scope.foreups.push(JSON.stringify(backUp(globalScope)));
     var backupOx = globalScope.ox;
     var backupOy = globalScope.oy;
     var backupScale = globalScope.scale;
@@ -210,6 +316,7 @@ function undo(scope = globalScope) {
     loading = true;
     loadScope(tempScope, JSON.parse(scope.backups.pop()));
     tempScope.backups = scope.backups;
+    tempScope.foreups = scope.foreups;
     tempScope.id = scope.id;
     tempScope.name = scope.name;
     scopeList[scope.id] = tempScope;
@@ -217,6 +324,35 @@ function undo(scope = globalScope) {
     globalScope.ox = backupOx;
     globalScope.oy = backupOy;
     globalScope.scale = backupScale;
+    loading = false;
+    forceResetNodes = true;
+
+    // Updated restricted elements
+    updateRestrictedElementsInScope();
+}
+
+// Function to restore copy from backup
+function redo(scope = globalScope) {
+    if(layoutMode)return;
+    if (scope.foreups.length == 0) return;
+    scope.backups.push(JSON.stringify(backUp(globalScope)));
+    var foreupOx = globalScope.ox;
+    var foreupOy = globalScope.oy;
+    var foreupScale = globalScope.scale;
+    globalScope.ox = 0;
+    globalScope.oy = 0;
+    var tempScope = new Scope(scope.name);
+    loading = true;
+    loadScope(tempScope, JSON.parse(scope.foreups.pop()));
+    tempScope.foreups = scope.foreups;
+    tempScope.backups = scope.backups;
+    tempScope.id = scope.id;
+    tempScope.name = scope.name;
+    scopeList[scope.id] = tempScope;
+    globalScope = tempScope;
+    globalScope.ox = foreupOx;
+    globalScope.oy = foreupOy;
+    globalScope.scale = foreupScale;
     loading = false;
     forceResetNodes = true;
 
@@ -552,7 +688,10 @@ function load(data) {
             globalScope.centerFocus(true);
         else
             globalScope.centerFocus(false);
-
+        //Load Shortcuts
+        if(localStorage.getItem('keyboardMapping')!=null){
+          keyboardMapping = localStorage.getItem('keyboardMapping')
+        }
         // update and backup circuit once
         update(globalScope, true);
 
