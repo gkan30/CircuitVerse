@@ -1,3 +1,12 @@
+:root{
+  --backgroundColor1 : #333;
+  --backgroundColor2 : #333;
+  --hoverColor : #0099ff;;
+  --borderColor : #0099ff;;
+  --titleColor: #0099ff;;
+  --navbarColor : #343A40;
+
+}
 .deleteOff {
     color: red;
     float: right;
@@ -52,22 +61,24 @@ button:focus {
 .side {
     width: 270px;
     height: 100%;
-    background-color: #333;
+    background-color: var(--backgroundColor1);
     padding: 3px;
     color: #fff;
-    border-side: 1px solid #0099ff;
-    border-bottom: 40px solid #0099ff;
+    border-side: 1px solid var(--backgroundColor1);
+    border-bottom: 40px solid var(--backgroundColor1);
     padding: 0.5em;
 }
 
 .option {
     display: block;
     background-color: black;
-    border: 1px solid #005cb3;
-    color: #0099ff;
+    border: 1px solid var(--borderColor);
+    color: var(--titleColor);
     padding: 5px;
     width: 200px;
     margin: 3px;
+    word-wrap:break-word;
+    overflow-x:hidden;
 }
 
 .pannel-heading {
@@ -89,7 +100,7 @@ button:focus {
 
 .projectName {
     /*margin:3px;*/
-    color: #0099ff;
+    color: var(--titleColor);
     margin: 0 auto;
     text-align: center;
     font-size: 1.4em;
@@ -108,7 +119,7 @@ button:focus {
 }
 
 .option:hover {
-    border-color: #0099ff;
+    border-color: var(--hoverColor);
 }
 
 input[type="radio"]:checked ~ label {
@@ -182,24 +193,24 @@ input[type="radio"]:checked ~ label {
     font-size: 1.3em;
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
-    color: #0099ff;
+    color: var(--titleColor);
     text-align: center;
     padding-top: 0.3em;
 }
 
 .panel {
     padding: 0em;
-    background-color: #333;
+    background-color: var(--backgroundColor2);
     margin: 0;
     border-radius: 0;
     margin-bottom: 0em;
-    border: 1px solid #0099ff;
+    border: 1px solid var(--borderColor);
 }
 
 .ui-accordion-header {
-    background-color: #333;
+    background-color: var(--backgroundColor2);
     color: #fff;
-    border: 1px solid #0099ff;
+    border: 1px solid var(--borderColor);
     border-radius: 0;
     margin: 0em;
     padding: 0em;
@@ -207,13 +218,13 @@ input[type="radio"]:checked ~ label {
 }
 
 .ui-accordion-header.ui-accordion-header-active.ui-state-active {
-    background-color: #0099ff;
+    background-color: var(--hoverColor);
     outline: none;
     margin-bottom: 0;
 }
 
 .ui-accordion-header.ui-state-hover {
-    background-color: #0066cc;
+    background-color: var(--hoverColor);
     outline: none;
     /*margin-bottom: 0;*/
 }
@@ -222,14 +233,14 @@ input[type="radio"]:checked ~ label {
 
 .moduleProperty {
     display: none;
-    background-color: #333;
+    background-color: var(--backgroundColor2);
     color: #fff;
     /*padding-bottom: 2em;*/
     margin-top: 1em;
 }
 
 #moduleProperty-inner {
-    border: 1px solid #0099ff;
+    border: 1px solid var(--borderColor);
     padding: 1em;
     /*margin-bottom: 1em;*/
 }
@@ -237,13 +248,13 @@ input[type="radio"]:checked ~ label {
 #moduleProperty-toolTip {
     padding: 10px;
     /*font-size: 1.1em;*/
-    color: #0099ff;
+    color: var(--hoverColor);
 }
 
 #moduleProperty-title {
     text-transform: uppercase;
     font-size: 1.3em;
-    color: #0099ff;
+    color: var(--titleColor);
     margin-bottom: 0.55em;
     text-align: center;
 }
@@ -311,23 +322,23 @@ select {
 #tabsBar .circuits {
     color: #fff;
     text-align: center;
-    background-color: #00284d;
+    background-color: var(--backgroundColor2);
     padding-left: 0.5em;
     padding-right: 0.5em;
-    border: 1px solid #005cb3;
+    border: 1px solid var(--hoverColor);
     border-radius: 0.1em;
 }
 
 #tabsBar .circuits:hover {
-    background-color: #00ace6;
+    background-color: var(--hoverColor);
     /*border: 1px solid #0099ff;*/
     transition-duration: 100ms;
 }
 
 #tabsBar .current {
     /*background-color: #0086b3;*/
-    background-color: #004280;
-    border: 1px solid #0099ff;
+    background-color: var(--backgroundColor1);
+    border: 1px solid var(--backgroundColor1);
 }
 
 th,
@@ -335,7 +346,7 @@ td {
     padding-left: 15px;
     padding-right: 15px;
     text-align: left;
-    border: 1px solid #0099ff;
+    border: 1px solid var(--borderColor);
     color: white;
 }
 
@@ -599,7 +610,7 @@ input:checked + .slider2:before {
     background-color: white;
     border-radius: 4px;
     /*border-color: #0099ff;*/
-    border: 2px solid #0099ff;
+    border: 2px solid var(--borderColor);
     text-align: center;
     font-size: 8px;
     padding: 3px;
@@ -627,7 +638,7 @@ div.icon img {
     bottom: -10;
     left: 0;
     right: 0;
-    background-color: #0099ff;
+    background-color: var(--borderColor);
     color: white;
     font-size: 8px;
     /*background: rgba(29, 106, 154, 0.72);
@@ -765,12 +776,16 @@ div.icon img {
 
 .dropdown-menu {
     background-color: black;
-    border: 1px solid #09f;
+    border: 1px solid var(--borderColor);
     border-top: none;
 }
 
 .navbar-nav > li > a {
     padding: 7px 15px;
+}
+
+.navbar{
+    background-color : var(--navbarColor)
 }
 
 .dropdown-menu > li > a {
@@ -779,25 +794,41 @@ div.icon img {
 }
 
 .dropdown-menu > li > a:hover {
-    color: #4db8ff !important;
+    color: var(--titleColor) !important;
     background-color: black;
+}
+
+select {
+    background-color: var(--backgroundColor2);
+    color : #fff;
+    margin: 5px;
+
+}
+
+select:hover {
+    background-color: var(--hoverColor);
+    color : #fff;
+}
+
+label{
+    color : var(--titleColor);
 }
 
 .ui-dialog {
-    background: #222;
+    background: var(--backgroundColor1);
 }
 
 .ui-dialog p {
-    color: #9d9d9d;
+    color: var(--titleColor);
 }
 
 .ui-widget-header {
-    border: 1px solid #0099ff;
-    color: #0099ff;
+    border: 1px solid var(--borderColor);
+    color: var(--titleColor);
 }
 
 .ui-dialog-buttonpane {
-    background-color: black;
+    background-color: var(--backgroundColor2);
 }
 
 .ui-dialog-titlebar {
@@ -820,8 +851,8 @@ div.icon img {
 }
 
 .ui-dialog .ui-dialog-buttonpane button {
-    background-color: #004280;
-    border: 1px solid #09f;
+    background-color: var(--backgroundColor1);
+    border: 1px solid var(--borderColor);
     color: white;
 }
 
