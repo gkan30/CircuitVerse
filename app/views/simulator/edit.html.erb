@@ -10,10 +10,10 @@
     logix_project_id = <%= @logix_project_id%>;
     projectName = "<%= @projectName%>"
   </script>
-  <nav class="navbar navbar-expand-lg toolbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg toolbar navbar-dark">
     <a class="navbar-brand" href="/">CircuitVerse</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                                               data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                               data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                                aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,9 +59,10 @@
         <%if user_signed_in? %>
           <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="toolbarButton" ><a href=<%=  profile_path(current_user) %>>Profile</a></li>
+            <li><a class="dropdown-item" href=<%= profile_path(current_user) %>>Profile</a></li>
             <li class="toolbarButton" ><a href= <%=  user_path(current_user) %>>My circuits</a></li>
             <li class="toolbarButton" ><a href= <%=  user_groups_path(current_user) %>>My groups</a></li>
+	          <li><a class="dropdown-item logixButton" id="preferencesWindow">Preferences</a></li>
             <div class="dropdown-divider"></div>
             <li class="toolbarButton" ><a rel="nofollow" data-method="delete" href= <%= destroy_user_session_path%> >Sign out</a></li>
           </ul>
@@ -116,6 +117,7 @@
             <li onclick="menuItemClicked(1)"><a>Cut</a></li>
             <li onclick="menuItemClicked(3)"><a>Delete</a></li>
             <li onclick="menuItemClicked(4)"><a>Undo</a></li>
+	          <li onclick="menuItemClicked(8)"><a>Redo</a></li>
             <li onclick="menuItemClicked(5)"><a>New Circuit</a></li>
             <li onclick="menuItemClicked(6)"><a>Insert SubCircuit</a></li>
             <li onclick="menuItemClicked(7)"><a>Center Focus</a></li>
@@ -214,19 +216,95 @@
     </div>
     <div id="combinationalAnalysis"  style="display:none;" title="BooleanLogicTable"></div>
     <div id="truthTable"  style="display:none;" title="Truth Table"></div>
+    <div id="preferences"  style="display:none;" title="Preferences">
+	<p>
+        <p>Color Scheme</p>
+        <label class="option inline"><input type="radio" name="colorScheme" id="Theme1" value=1 checked="checked">Light</label>
+        <label class="option inline"><input type="radio" name="colorScheme" id="Theme2" value=2>Dark</label>
+        <label class="option inline"> <input type="radio" name="colorScheme"id="Theme3" value="Palate1">Palate1</label>
+        <label class="option inline"> <input type="radio" name="colorScheme"id="Theme4" value="Palate2">Palate2</label>
+      </p>
+	<p>
+        <p>Keyboard Mapping</p>
+
+        <label for="shortcut">Shortcut</label>
+  <select id="shortcut" name="mapping">
+    <option value="undo">Undo</option>
+    <option value="redo">Redo</option>
+    <option value="save">Save</option>
+    <option value="save-offline">Save Offline</option>
+    <option value="select-all">Select All</option>
+    <option value="direction-up">Direction Up</option>
+    <option value="direction-down">Direction Down</option>
+    <option value="direction-left">Direction Left</option>
+    <option value="direction-right">Direction Right</option>
+  </select>
+  <br>
+  <label for="keys">Keys</label>
+	<div>
+	<select id="special-key" name="key1">
+
+    <option value="0">CTRL</option>
+    <option value="1">SHIFT</option>
+    <option value="2">CTRL+SHIFT</option>
+<option value="none">None</option>
+
+  </select>
+<select id="regular-key" name="key2">
+    <option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option>
+<option value="K">K</option>
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="N">N</option>
+<option value="O">O</option>
+<option value="P">P</option>
+<option value="Q">Q</option>
+<option value="R">R</option>
+<option value="S">S</option>
+<option value="T">T</option>
+<option value="U">U</option>
+<option value="V">V</option>
+<option value="W">W</option>
+<option value="X">X</option>
+<option value="Y">Y</option>
+<option value="Z">Z</option>
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+
+  </select>
+</div>
+      </p>
+    </div>
     <div id="insertSubcircuitDialog" style="display:none;"  title="Insert SubCircuit"></div>
     <div id="openProjectDialog" style="display:none;"  title="Open Project"></div>
   </div>
   <!-- Right panel -->
   <div id="saveImageDialog" style="display:none;" title="Render Image">
     <p>
-      <label class="option inline"><input type="radio" name="imgType" value="png" checked="checked" />PNG</label>
-      <label class="option inline"><input type="radio" name="imgType" value="jpeg" />JPEG</label>
-      <label class="option inline"> <input type="radio" name="imgType" value="svg" />SVG</label>
-      <label class="option inline"> <input type="radio" name="imgType" value="bmp" />BMP</label>
-      <label class="option inline"> <input type="radio" name="imgType" value="gif" />GIF</label>
-      <label class="option inline"> <input type="radio" name="imgType" value="tiff" />TIFF</label>
-    </p>
+        <label class="option inline"><input type="radio" name="imgType" value="png" checked="checked">PNG</label>
+        <label class="option inline"><input type="radio" name="imgType" value="jpeg">JPEG</label>
+        <label class="option inline"> <input type="radio" name="imgType" value="svg">SVG</label>
+        <label class="option inline"> <input type="radio" name="imgType" value="bmp">BMP</label>
+        <label class="option inline"> <input type="radio" name="imgType" value="gif">GIF</label>
+        <label class="option inline"> <input type="radio" name="imgType" value="tiff">TIFF</label>
+      </p>
     <p>
       <label class="option inline"><input type="radio" name="view" value="full" /> Full Circuit View</label>
       <label class="option inline"> <input type="radio" name="view" value="current" checked="checked" />Current View</label>
@@ -247,7 +325,7 @@
       setup()
      }, false);
     embed=false;
-    
+
     <% if @project&.assignment_id.present? %>
       restrictedElements = JSON.parse('<%= raw @project&.assignment.restrictions %>');
     <% else %>
@@ -258,7 +336,7 @@
   <!-- on hover for dropdowns -->
   <script>
     $('.dropdown-toggle').hover( function() {
-    
+
         $('.dropdown.open').removeClass('open');
         $(this).parent('.dropdown').addClass('open');
     });
