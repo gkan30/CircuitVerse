@@ -100,7 +100,7 @@ function startListeners() {
         scheduleUpdate(1);
         updateCanvas = true;
         wireToBeChecked = 1;
-
+        var shortcut;
         // Needs to be deprecated, moved to more recent listeners
         if (simulationArea.controlDown && (e.key == "C" || e.key == "c")) {
             //    simulationArea.copyList=simulationArea.multipleObjectSelections.slice();
@@ -148,38 +148,51 @@ function startListeners() {
             delete_selected();
         }
 
-        if (simulationArea.controlDown && e.key.charCodeAt(0) == 122) { // detect the special CTRL-Z code
+        shortcut = keyboardMapping["undo"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())) { // detect the special CTRL-Z code
             undo();
         }
 
+        shortcut = keyboardMapping["redo"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())) { // detect the special CTRL-Y code
+            redo();
+        }
+
+        shortcut = keyboardMapping["save"];
         // Detect online save shortcut (CTRL+S)
-        if (simulationArea.controlDown && e.keyCode == 83 && !simulationArea.shiftDown) {
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())) {
             save();
             e.preventDefault();
         }
          // Detect offline save shortcut (CTRL+SHIFT+S)
-        if (simulationArea.controlDown && e.keyCode == 83 && simulationArea.shiftDown) {
+         shortcut = keyboardMapping["save-offline"];
+      if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())){
             saveOffline();
             e.preventDefault();
         }
 
         // Detect Select all Shortcut
-        if (simulationArea.controlDown && (e.keyCode == 65 || e.keyCode == 97)) {
+        shortcut = keyboardMapping["select-all"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())) {
             selectAll();
             e.preventDefault();
         }
 
         //change direction fns
-        if ((e.keyCode == 37 || e.keyCode == 65)&& simulationArea.lastSelected != undefined) {
+        shortcut = keyboardMapping["direction-left"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase())&& simulationArea.lastSelected != undefined) {
             simulationArea.lastSelected.newDirection("LEFT");
         }
-        if ((e.keyCode == 38 || e.keyCode == 87) && simulationArea.lastSelected != undefined) {
+        shortcut = keyboardMapping["direction-up"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase()) && simulationArea.lastSelected != undefined) {
             simulationArea.lastSelected.newDirection("UP");
         }
-        if ((e.keyCode == 39 || e.keyCode == 68) && simulationArea.lastSelected != undefined) {
+        shortcut = keyboardMapping["direction-right"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase()) && simulationArea.lastSelected != undefined) {
             simulationArea.lastSelected.newDirection("RIGHT");
         }
-        if ((e.keyCode == 40 || e.keyCode == 83) && simulationArea.lastSelected != undefined) {
+        shortcut = keyboardMapping["direction-down"];
+        if ((simulationArea.controlDown==shortcut["ctrl"]) && (simulationArea.shiftDown==shortcut["shift"]) && ((e.key).toLowerCase()== shortcut["key"].toLowerCase()) && simulationArea.lastSelected != undefined) {
             simulationArea.lastSelected.newDirection("DOWN");
         }
         if ((e.keyCode == 113 || e.keyCode == 81) && simulationArea.lastSelected != undefined) {
