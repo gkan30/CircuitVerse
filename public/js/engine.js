@@ -59,6 +59,8 @@ function update(scope = globalScope, updateEverything = false) {
         scheduleUpdate();
     }
 
+
+
     // Update subcircuits
     if (updateSubcircuit || updateEverything) {
         for (var i = 0; i < scope.SubCircuit.length; i++)
@@ -89,7 +91,7 @@ function update(scope = globalScope, updateEverything = false) {
     if (updateSimulation) {
         play();
     }
-
+    setTheme();
     // Show properties of selected element
     if (!embed && prevPropertyObj != simulationArea.lastSelected) {
         if (simulationArea.lastSelected && simulationArea.lastSelected.objectType !== "Wire") {
@@ -279,6 +281,14 @@ function renderCanvas(scope) {
         ctx.stroke();
         ctx.fill();
     }
+	//console.log(simulationArea.mouseDown);
+	if (simulationArea.hover != undefined) {
+		simulationArea.canvas.style.cursor = "pointer";
+	}else if (simulationArea.mouseDown) {
+		simulationArea.canvas.style.cursor = 'grabbing';
+	}else {
+		simulationArea.canvas.style.cursor = 'default';
+	}
 
 }
 
