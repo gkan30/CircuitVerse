@@ -222,7 +222,19 @@ function uniq(a) {
 
 // Currently Focussed circuit/scope
 globalScope = undefined;
-
+Theme = localStorage.getItem('Theme');
+//Default keyboardMapping
+keyboardMapping = {
+"undo":{"shift":false,"ctrl":true,"key":"Z"},
+"redo":{"shift":false,"ctrl":true,"key":"Y"},
+"save":{"shift":false,"ctrl":true,"key":"S"},
+"save-offline":{"shift":true,"ctrl":true,"key":"S"},
+"select-all":{"shift":false,"ctrl":true,"key":"A"},
+"direction-up":{"shift":false,"ctrl":false,"key":"W"},
+"direction-down":{"shift":false,"ctrl":false,"key":"S"},
+"direction-left":{"shift":false,"ctrl":false,"key":"A"},
+"direction-right":{"shift":false,"ctrl":false,"key":"D"}
+};
 // Base circuit class
 // All circuits are stored in a scope
 
@@ -234,6 +246,7 @@ function Scope(name = "localScope", id = undefined) {
     //root object for referring to main canvas - intermediate node uses this
     this.root = new CircuitElement(0, 0, this, "RIGHT", 1);
     this.backups = [];
+    this.foreups = [];
     this.timeStamp = new Date().getTime();
 
     this.ox = 0;
@@ -399,6 +412,7 @@ function setup() {
                     data = (response);
 
                     if (data) {
+                        console.log(data);
                         load(data);
                         simulationArea.changeClockTime(data["timePeriod"] || 500);
                     }
