@@ -222,7 +222,7 @@ function uniq(a) {
 
 // Currently Focussed circuit/scope
 globalScope = undefined;
-Theme = localStorage.getItem('Theme');
+Theme = JSON.parse(localStorage.getItem('Theme'));
 //Default keyboardMapping
 keyboardMapping = {
 "undo":{"shift":false,"ctrl":true,"key":"Z"},
