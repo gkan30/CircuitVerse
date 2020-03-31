@@ -246,7 +246,7 @@ function renderCanvas(scope) {
     if (layoutMode) { // Different Algorithm
         return;
     }
-
+    setTheme();
     var ctx = simulationArea.context;
 
     // Reset canvas
