@@ -57,22 +57,10 @@ function changeScale(delta,xx,yy,method=1) {
 
 function dots(dots=true, transparentBackground=false,force=false) {
 
-    var stroke;
-    var fill;
     var scale = unit * globalScope.scale;
     var ox = globalScope.ox % scale; //offset
     var oy = globalScope.oy % scale; //offset
-    if(Theme == 1){
-          stroke = '#eee';
-          fill = 'white';
-        }else if(Theme == 2){
-          stroke = '#212121';
-          fill = '#161616';
-        }else{
-          stroke = '#eee';
-          fill = 'white';
-          setTheme(1);
-        }
+
     document.getElementById("backgroundArea").style.left=(ox-scale)/DPR;
     document.getElementById("backgroundArea").style.top=(oy-scale)/DPR;
 
@@ -91,10 +79,10 @@ function dots(dots=true, transparentBackground=false,force=false) {
     var ctx = backgroundArea.context;
     ctx.beginPath();
     backgroundArea.clear();
-    ctx.strokeStyle=stroke;
+    ctx.strokeStyle=Theme.stroke;
     ctx.lineWidth=1;
     if (!transparentBackground) {
-        ctx.fillStyle = fill;
+        ctx.fillStyle = Theme.fill;
         ctx.rect(0, 0, canvasWidth, canvasHeight);
         ctx.fill();
     }
