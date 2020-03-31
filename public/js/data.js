@@ -178,7 +178,7 @@ preferencesWindow = function(scope = globalScope) {
             text: "Save",
             click: function() {
                 $(this).dialog("close");
-                localStorage.setItem('Theme',$('input[name=colorScheme]:checked').val());
+                localStorage.setItem('Theme',JSON.stringify(Theme));
                 localStorage.setItem('mapping',JSON.stringify(keyboardMapping));
             },
         }]
@@ -231,11 +231,16 @@ preferencesWindow = function(scope = globalScope) {
 
 }
 
-setTheme = function(colorScheme=Theme){
-  Theme = colorScheme;
+setTheme = function(colorScheme=Theme.id){
+  Theme.id = colorScheme;
   var root = document.documentElement;
+  if(Theme.id == undefined){
+    Theme.id = 1;
+    Theme.fill = '#eee';
+    Theme.stroke = 'white';
+  }
 
-  if(Theme == 1){
+  if(Theme.id == 1){
     document.getElementById("Theme1").checked = true;
     root.style.setProperty('--backgroundColor1', '#333');
     root.style.setProperty('--backgroundColor2', '#444');
@@ -243,7 +248,9 @@ setTheme = function(colorScheme=Theme){
     root.style.setProperty('--borderColor', '#0099ff');
     root.style.setProperty('--titleColor', '#0099ff');
     root.style.setProperty('--navbarColor', '#343A40');
-}else if(Theme ==2){
+    Theme.fill = 'white';
+    Theme.stroke = '#eee';
+}else if(Theme.id ==2){
   document.getElementById("Theme2").checked = true;
   root.style.setProperty('--backgroundColor1', '#212121');
   root.style.setProperty('--backgroundColor2', '#161616');
@@ -251,6 +258,8 @@ setTheme = function(colorScheme=Theme){
   root.style.setProperty('--borderColor', '#161616');
   root.style.setProperty('--titleColor', '#fff');
   root.style.setProperty('--navbarColor', '#161616');
+  Theme.fill = '#161616';
+  Theme.stroke = '#212121';
 }
 
 
