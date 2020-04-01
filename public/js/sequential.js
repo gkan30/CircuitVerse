@@ -109,7 +109,7 @@ TflipFlop.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -219,7 +219,7 @@ DflipFlop.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -307,7 +307,7 @@ Dlatch.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -487,7 +487,7 @@ SRflipFlop.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -609,7 +609,7 @@ JKflipFlop.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -745,7 +745,7 @@ TTY.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -900,7 +900,7 @@ Keyboard.prototype.customDraw = function() {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -953,7 +953,7 @@ Clock.prototype.customDraw = function() {
 
     ctx = simulationArea.context;
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
