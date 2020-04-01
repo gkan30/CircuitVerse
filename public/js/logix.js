@@ -222,7 +222,12 @@ function uniq(a) {
 
 // Currently Focussed circuit/scope
 globalScope = undefined;
-Theme = JSON.parse(localStorage.getItem('Theme'));
+//Theme = JSON.parse(localStorage.getItem('Theme'));
+
+// if(Theme == undefined){
+//   Theme = {id:1};
+// }
+
 //Default keyboardMapping
 keyboardMapping = {
 "undo":{"shift":false,"ctrl":true,"key":"Z"},
@@ -441,7 +446,8 @@ function setup() {
         }
     }, 1000);
 
-
+    document.getElementById(localStorage.getItem('theme')).checked = true;
+    dots(true,false,true);
 }
 
 // Helper function to recover unsaved data
@@ -1278,7 +1284,7 @@ CircuitElement.prototype.draw = function() {
         ctx.lineWidth = correctWidth(3);
         ctx.beginPath();
         rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, [this.direction, "RIGHT"][+this.directionFixed]);
-        if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
         ctx.fill();
         ctx.stroke();
     }
