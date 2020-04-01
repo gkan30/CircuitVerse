@@ -89,7 +89,7 @@ AndGate.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.lineWidth = correctWidth(3);
     ctx.strokeStyle = "black"; //("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     var xx = this.x;
     var yy = this.y;
 
@@ -179,7 +179,7 @@ NandGate.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.lineWidth = correctWidth(3);
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     var xx = this.x;
     var yy = this.y;
 
@@ -300,7 +300,7 @@ Multiplexer.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
 
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -20 + this.xOff, -this.yOff * 10 * (this.inputSize / 2), xx, yy, this.direction);
     lineTo(ctx, -20 + this.xOff, 20 + this.yOff * 10 * (this.inputSize / 2 - 1), xx, yy, this.direction);
     lineTo(ctx, 20 - this.xOff, +this.yOff * 10 * (this.inputSize / 2 - 1) + this.xOff, xx, yy, this.direction);
@@ -398,7 +398,7 @@ XorGate.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -20, xx, yy, this.direction, true);
     bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
     bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
@@ -484,7 +484,7 @@ XnorGate.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -20, xx, yy, this.direction, true);
     bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
     bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
@@ -562,16 +562,16 @@ SevenSegDisplay.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
 
-    this.customDrawSegment(18, -3, 18, -38, ["lightgrey", "red"][this.b.value]);
-    this.customDrawSegment(18, 3, 18, 38, ["lightgrey", "red"][this.c.value]);
-    this.customDrawSegment(-18, -3, -18, -38, ["lightgrey", "red"][this.f.value]);
-    this.customDrawSegment(-18, 3, -18, 38, ["lightgrey", "red"][this.e.value]);
-    this.customDrawSegment(-17, -38, 17, -38, ["lightgrey", "red"][this.a.value]);
-    this.customDrawSegment(-17, 0, 17, 0, ["lightgrey", "red"][this.g.value]);
-    this.customDrawSegment(-15, 38, 17, 38, ["lightgrey", "red"][this.d.value]);
+    this.customDrawSegment(18, -3, 18, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.b.value]);
+    this.customDrawSegment(18, 3, 18, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.c.value]);
+    this.customDrawSegment(-18, -3, -18, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.f.value]);
+    this.customDrawSegment(-18, 3, -18, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.e.value]);
+    this.customDrawSegment(-17, -38, 17, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.a.value]);
+    this.customDrawSegment(-17, 0, 17, 0, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.g.value]);
+    this.customDrawSegment(-15, 38, 17, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.d.value]);
 
     ctx.beginPath();
-    var dotColor = ["lightgrey", "red"][this.dot.value] || "lightgrey"
+    var dotColor = ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.dot.value] || "lightgrey"
     ctx.strokeStyle = dotColor;
     rect(ctx, xx + 22, yy + 42, 2, 2);
     ctx.stroke();
@@ -635,28 +635,28 @@ SixteenSegDisplay.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
 
-    var color = ["lightgrey", "red"];
+    var color = ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback];
     var value = this.input1.value;
 
-    this.customDrawSegment(-20, -38, 0, -38, ["lightgrey", "red"][(value >> 15) & 1]);		//a1
-    this.customDrawSegment(20, -38, 0, -38, ["lightgrey", "red"][(value >> 14) & 1]);		//a2
-    this.customDrawSegment(21.5, -2, 21.5, -36, ["lightgrey", "red"][(value >> 13) & 1]);	//b
-    this.customDrawSegment(21.5, 2, 21.5, 36, ["lightgrey", "red"][(value >> 12) & 1]);		//c
-    this.customDrawSegment(-20, 38, 0, 38, ["lightgrey", "red"][(value >> 11) & 1]);		//d1
-    this.customDrawSegment(20, 38, 0, 38, ["lightgrey", "red"][(value >> 10) & 1]);			//d2
-    this.customDrawSegment(-21.5, 2, -21.5, 36, ["lightgrey", "red"][(value >> 9) & 1]);	//e
-    this.customDrawSegment(-21.5, -36, -21.5, -2, ["lightgrey", "red"][(value >> 8) & 1]);	//f
-    this.customDrawSegment(-20, 0, 0, 0, ["lightgrey", "red"][(value >> 7) & 1]);			//g1
-    this.customDrawSegment(20, 0, 0, 0, ["lightgrey", "red"][(value >> 6) & 1]);			//g2
-    this.customDrawSegmentSlant(0, 0, -21, -37, ["lightgrey", "red"][(value >> 5) & 1]);	//h
-    this.customDrawSegment(0, -2, 0, -36, ["lightgrey", "red"][(value >> 4) & 1]);			//i
-    this.customDrawSegmentSlant(0, 0, 21, -37, ["lightgrey", "red"][(value >> 3) & 1]);		//j
-    this.customDrawSegmentSlant(0, 0, 21, 37, ["lightgrey", "red"][(value >> 2) & 1]);		//k
-    this.customDrawSegment(0, 2, 0, 36, ["lightgrey", "red"][(value >> 1) & 1]);			//l
-    this.customDrawSegmentSlant(0, 0, -21, 37, ["lightgrey", "red"][(value >> 0) & 1]);		//m
+    this.customDrawSegment(-20, -38, 0, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 15) & 1]);		//a1
+    this.customDrawSegment(20, -38, 0, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 14) & 1]);		//a2
+    this.customDrawSegment(21.5, -2, 21.5, -36, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 13) & 1]);	//b
+    this.customDrawSegment(21.5, 2, 21.5, 36, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 12) & 1]);		//c
+    this.customDrawSegment(-20, 38, 0, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 11) & 1]);		//d1
+    this.customDrawSegment(20, 38, 0, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 10) & 1]);			//d2
+    this.customDrawSegment(-21.5, 2, -21.5, 36, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 9) & 1]);	//e
+    this.customDrawSegment(-21.5, -36, -21.5, -2, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 8) & 1]);	//f
+    this.customDrawSegment(-20, 0, 0, 0, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 7) & 1]);			//g1
+    this.customDrawSegment(20, 0, 0, 0, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 6) & 1]);			//g2
+    this.customDrawSegmentSlant(0, 0, -21, -37, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 5) & 1]);	//h
+    this.customDrawSegment(0, -2, 0, -36, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 4) & 1]);			//i
+    this.customDrawSegmentSlant(0, 0, 21, -37, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 3) & 1]);		//j
+    this.customDrawSegmentSlant(0, 0, 21, 37, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 2) & 1]);		//k
+    this.customDrawSegment(0, 2, 0, 36, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 1) & 1]);			//l
+    this.customDrawSegmentSlant(0, 0, -21, 37, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(value >> 0) & 1]);		//m
 
     ctx.beginPath();
-    var dotColor = ["lightgrey", "red"][this.dot.value] || "lightgrey"
+    var dotColor = ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][this.dot.value] || "lightgrey"
     ctx.strokeStyle = dotColor;
     rect(ctx, xx + 22, yy + 42, 2, 2);
     ctx.stroke();
@@ -761,13 +761,13 @@ HexDisplay.prototype.customDraw = function () {
         default:
 
     }
-    this.customDrawSegment(18, -3, 18, -38, ["lightgrey", "red"][b]);
-    this.customDrawSegment(18, 3, 18, 38, ["lightgrey", "red"][c]);
-    this.customDrawSegment(-18, -3, -18, -38, ["lightgrey", "red"][f]);
-    this.customDrawSegment(-18, 3, -18, 38, ["lightgrey", "red"][e]);
-    this.customDrawSegment(-17, -38, 17, -38, ["lightgrey", "red"][a]);
-    this.customDrawSegment(-17, 0, 17, 0, ["lightgrey", "red"][g]);
-    this.customDrawSegment(-15, 38, 17, 38, ["lightgrey", "red"][d]);
+    this.customDrawSegment(18, -3, 18, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][b]);
+    this.customDrawSegment(18, 3, 18, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][c]);
+    this.customDrawSegment(-18, -3, -18, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][f]);
+    this.customDrawSegment(-18, 3, -18, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][e]);
+    this.customDrawSegment(-17, -38, 17, -38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][a]);
+    this.customDrawSegment(-17, 0, 17, 0, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][g]);
+    this.customDrawSegment(-15, 38, 17, 38, ["lightgrey", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][d]);
 
 }
 
@@ -854,7 +854,7 @@ OrGate.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
 
     moveTo(ctx, -10, -20, xx, yy, this.direction, true);
     bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
@@ -953,7 +953,7 @@ NotGate.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -10, xx, yy, this.direction);
     lineTo(ctx, 10, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 10, xx, yy, this.direction);
@@ -1082,7 +1082,7 @@ Text.prototype.draw = function () {
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) {
         ctx.beginPath();
-        ctx.fillStyle = "white";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
         rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, "RIGHT");
         ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
         ctx.fill();
@@ -1158,7 +1158,7 @@ TriState.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -15, xx, yy, this.direction);
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
@@ -1224,7 +1224,7 @@ Buffer.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -15, xx, yy, this.direction);
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
@@ -1285,7 +1285,7 @@ ControlledInverter.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -10, -15, xx, yy, this.direction);
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
@@ -1421,7 +1421,7 @@ Rom.prototype.customDraw = function () {
 
 
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     ctx.beginPath();
     rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, [this.direction, "RIGHT"][+this.directionFixed]);
@@ -1993,8 +1993,8 @@ Output.prototype.customDraw = function () {
     this.state = this.inp1.value;
     ctx = simulationArea.context;
     ctx.beginPath();
-    ctx.strokeStyle = ["blue", "red"][+(this.inp1.value == undefined)];
-    ctx.fillStyle = "white";
+    ctx.strokeStyle = ["#00203f", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][+(this.inp1.value == undefined)];
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -2087,8 +2087,8 @@ BitSelector.prototype.customDraw = function () {
 
     ctx = simulationArea.context;
     ctx.beginPath();
-    ctx.strokeStyle = ["blue", "red"][(this.state === undefined) + 0];
-    ctx.fillStyle = "white";
+    ctx.strokeStyle = ["blue", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][(this.state === undefined) + 0];
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -2169,7 +2169,7 @@ ConstantVal.prototype.customDraw = function () {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(1);
     var xx = this.x;
     var yy = this.y;
@@ -2270,7 +2270,7 @@ NorGate.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.beginPath();
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
 
     moveTo(ctx, -10, -20, xx, yy, this.direction, true);
     bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
@@ -2286,7 +2286,7 @@ NorGate.prototype.customDraw = function () {
     //for debugging
 }
 
-function DigitalLed(x, y, scope = globalScope, color = "Red") {
+function DigitalLed(x, y, scope = globalScope, color = window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback) {
     // Calling base class constructor
 
     CircuitElement.call(this, x, y, scope, "UP", 1);
@@ -2504,7 +2504,7 @@ function RGBLed(x, y, scope = globalScope) {
 }
 RGBLed.prototype = Object.create(CircuitElement.prototype);
 RGBLed.prototype.constructor = RGBLed;
-RGBLed.prototype.tooltipText = "RGB Led ToolTip: RGB Led inputs 8 bit values for the colors RED, GREEN and BLUE."
+RGBLed.prototype.tooltipText = "RGB Led ToolTip: RGB Led inputs 8 bit values for the colors window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback, GREEN and BLUE."
 RGBLed.prototype.customSave = function () {
     var data = {
         nodes: {
@@ -2529,7 +2529,7 @@ RGBLed.prototype.customDraw = function () {
     lineTo(ctx, -40, 0, xx, yy, this.direction);
     ctx.stroke();
 
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback;
     ctx.lineWidth = correctWidth(3);
     ctx.beginPath();
     moveTo(ctx, -20, -10, xx, yy, this.direction);
@@ -2610,7 +2610,7 @@ function SquareRGBLed(x, y, scope = globalScope, dir = "UP", pinLength = 1) {
 }
 SquareRGBLed.prototype = Object.create(CircuitElement.prototype);
 SquareRGBLed.prototype.constructor = SquareRGBLed;
-SquareRGBLed.prototype.tooltipText = "Square RGB Led ToolTip: RGB Led inputs 8 bit values for the colors RED, GREEN and BLUE."
+SquareRGBLed.prototype.tooltipText = "Square RGB Led ToolTip: RGB Led inputs 8 bit values for the colors window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback, GREEN and BLUE."
 SquareRGBLed.prototype.customSave = function () {
     var data = {
         constructorParamaters: [this.direction, this.pinLength],
@@ -2644,7 +2644,7 @@ SquareRGBLed.prototype.customDraw = function () {
         lineTo(ctx, x + 10, y, xx, yy, this.direction);
         ctx.stroke();
 
-        // A colored line, so people know which pin does what.
+        // A colowindow[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback line, so people know which pin does what.
         ctx.lineCap = "round";
         ctx.beginPath();
         ctx.strokeStyle = colors[i];
@@ -2761,7 +2761,7 @@ Demultiplexer.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
     ctx.lineWidth = correctWidth(4);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -20 + this.xOff, -this.yOff * 10 * (this.outputsize / 2), xx, yy, this.direction);
     lineTo(ctx, -20 + this.xOff, 20 + this.yOff * 10 * (this.outputsize / 2 - 1), xx, yy, this.direction);
     lineTo(ctx, 20 - this.xOff, +this.yOff * 10 * (this.outputsize / 2 - 1) + this.xOff, xx, yy, this.direction);
@@ -2884,7 +2884,7 @@ Decoder.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.strokeStyle = ("rgba(0,0,0,1)");
     ctx.lineWidth = correctWidth(4);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     moveTo(ctx, -20 + this.xOff, -this.yOff * 10 * (this.outputsize / 2), xx, yy, this.direction);
     lineTo(ctx, -20 + this.xOff, 20 + this.yOff * 10 * (this.outputsize / 2 - 1), xx, yy, this.direction);
     lineTo(ctx, 20 - this.xOff, +this.yOff * 10 * (this.outputsize / 2 - 1) + this.xOff, xx, yy, this.direction);
@@ -3009,7 +3009,7 @@ Flag.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.font = "30px Georgia";
     ctx.textAlign = "center";
-    ctx.fillStyle = ["blue", "red"][+(this.inp1.value == undefined)];
+    ctx.fillStyle = ["blue", "#bb000e"][+(this.inp1.value == undefined)];
     if (this.inp1.value !== undefined)
         fillText(ctx, this.inp1.value.toString(16), xx + 35 - this.xSize, yy + 8, 25);
     else
@@ -3091,7 +3091,7 @@ MSB.prototype.customDraw = function () {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -3181,7 +3181,7 @@ LSB.prototype.customDraw = function () {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -3305,7 +3305,7 @@ PriorityEncoder.prototype.customDraw = function () {
     ctx = simulationArea.context;
     ctx.beginPath();
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
@@ -3506,7 +3506,7 @@ Tunnel.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.font = "30px Georgia";
     ctx.textAlign = "center";
-    ctx.fillStyle = ["blue", "red"][+(this.inp1.value == undefined)];
+    ctx.fillStyle = ["blue", window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback][+(this.inp1.value == undefined)];
     if (this.inp1.value !== undefined)
         fillText(ctx, this.inp1.value.toString(16), xx - 23 + xRotate, yy + 8 + yRotate, 25);
     else
@@ -3558,7 +3558,7 @@ ALU.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     ctx.strokeStyle = "black";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
     ctx.lineWidth = correctWidth(3);
     ctx.beginPath();
     moveTo(ctx, 30, 10, xx, yy, this.direction);
@@ -3763,8 +3763,8 @@ Arrow.prototype.customDraw = function () {
     ctx.lineWidth = correctWidth(3);
     var xx = this.x;
     var yy = this.y;
-    ctx.strokeStyle = "red";
-    ctx.fillStyle = "white";
+    ctx.strokeStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFeedback;
+    ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
 
     ctx.beginPath();
 
