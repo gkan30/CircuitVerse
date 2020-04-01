@@ -100,7 +100,7 @@ AndGate.prototype.customDraw = function () {
     lineTo(ctx, -10, -20, xx, yy, this.direction);
     ctx.closePath();
 
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -190,7 +190,7 @@ NandGate.prototype.customDraw = function () {
     lineTo(ctx, -10, -20, xx, yy, this.direction);
     ctx.closePath();
 
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.5)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -308,7 +308,7 @@ Multiplexer.prototype.customDraw = function () {
 
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -405,7 +405,7 @@ XorGate.prototype.customDraw = function () {
     bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
     // arc(ctx, 0, 0, -20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -491,7 +491,7 @@ XnorGate.prototype.customDraw = function () {
     bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
     // arc(ctx, 0, 0, -20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -861,7 +861,7 @@ OrGate.prototype.customDraw = function () {
     bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
     bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -958,7 +958,7 @@ NotGate.prototype.customDraw = function () {
     lineTo(ctx, 10, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 10, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -1084,7 +1084,7 @@ Text.prototype.draw = function () {
         ctx.beginPath();
         ctx.fillStyle = "white";
         rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, "RIGHT");
-        ctx.fillStyle = "rgba(255, 255, 32,0.1)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
         ctx.fill();
         ctx.stroke();
     }
@@ -1163,7 +1163,7 @@ TriState.prototype.customDraw = function () {
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -1229,7 +1229,7 @@ Buffer.prototype.customDraw = function () {
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -1290,7 +1290,7 @@ ControlledInverter.prototype.customDraw = function () {
     lineTo(ctx, 20, 0, xx, yy, this.direction);
     lineTo(ctx, -10, 15, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -1425,7 +1425,7 @@ Rom.prototype.customDraw = function () {
     ctx.lineWidth = correctWidth(3);
     ctx.beginPath();
     rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, [this.direction, "RIGHT"][+this.directionFixed]);
-    if (hoverIndex == undefined && ((!simulationArea.shiftDown && this.hover) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if (hoverIndex == undefined && ((!simulationArea.shiftDown && this.hover) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     // if (this.hover)
@@ -1782,7 +1782,7 @@ Power.prototype.customDraw = function () {
     lineTo(ctx, 0, -10, xx, yy, this.direction);
     ctx.closePath();
     ctx.stroke();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     moveTo(ctx, 0, 0, xx, yy, this.direction);
     lineTo(ctx, 0, 10, xx, yy, this.direction);
@@ -2001,7 +2001,7 @@ Output.prototype.customDraw = function () {
 
     rect2(ctx, -10 * this.bitWidth, -10, 20 * this.bitWidth, 20, xx, yy, "RIGHT");
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
 
     ctx.fill();
     ctx.stroke();
@@ -2093,7 +2093,7 @@ BitSelector.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     rect(ctx, xx - 20, yy - 20, 40, 40);
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -2175,7 +2175,7 @@ ConstantVal.prototype.customDraw = function () {
     var yy = this.y;
 
     rect2(ctx, -10 * this.bitWidth, -10, 20 * this.bitWidth, 20, xx, yy, "RIGHT");
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -2277,7 +2277,7 @@ NorGate.prototype.customDraw = function () {
     bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
     bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
     ctx.closePath();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.5)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
@@ -2356,7 +2356,7 @@ DigitalLed.prototype.customDraw = function () {
     arc(ctx, 0, 0, Math.sqrt(468), ((Math.PI / 2) + Math.acos(12 / Math.sqrt(468))), ((-Math.PI / 2) - Math.asin(18 / Math.sqrt(468))), xx, yy, this.direction);
     lineTo(ctx, -15, -9, xx, yy, this.direction);
     ctx.stroke();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
 
 }
@@ -2415,7 +2415,7 @@ VariableLed.prototype.customDraw = function () {
     */
     lineTo(ctx, -20, -9, xx, yy, this.direction);
     ctx.stroke();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
 
 }
@@ -2477,7 +2477,7 @@ Button.prototype.customDraw = function () {
     ctx.stroke();
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(232, 13, 13,0.6)"
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.indicationColor
 
     if (this.wasClicked)
         ctx.fillStyle = "rgba(232, 13, 13,0.8)";
@@ -2561,7 +2561,7 @@ RGBLed.prototype.customDraw = function () {
     arc(ctx, 0, 0, Math.sqrt(666), ((Math.PI / 2) + Math.acos(15 / Math.sqrt(666))), ((-Math.PI / 2) - Math.asin(21 / Math.sqrt(666))), xx, yy, this.direction);
     lineTo(ctx, -18, -11, xx, yy, this.direction);
     ctx.stroke();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
 }
 
@@ -2663,7 +2663,7 @@ SquareRGBLed.prototype.customDraw = function () {
     if ((this.hover && !simulationArea.shiftDown) ||
         simulationArea.lastSelected == this ||
         simulationArea.multipleObjectSelections.contains(this)) {
-        ctx.fillStyle = "rgba(255, 255, 32)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     }
 
     ctx.fill();
@@ -2769,7 +2769,7 @@ Demultiplexer.prototype.customDraw = function () {
 
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -2892,7 +2892,7 @@ Decoder.prototype.customDraw = function () {
 
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -2986,7 +2986,7 @@ Flag.prototype.customDraw = function () {
 
 
     rect2(ctx, -50 + this.xSize, -20, 100 - 2 * this.xSize, 40, xx, yy, "RIGHT");
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3096,7 +3096,7 @@ MSB.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     rect(ctx, xx - 10, yy - 30, 30, 60);
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3186,7 +3186,7 @@ LSB.prototype.customDraw = function () {
     var xx = this.x;
     var yy = this.y;
     rect(ctx, xx - 10, yy - 30, 30, 60);
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3313,7 +3313,7 @@ PriorityEncoder.prototype.customDraw = function () {
         rect(ctx, xx - 10, yy - 10 - this.yOff * 5 * (this.inputSize), 40, 20 * (this.inputSize + 1));
     else
         rect(ctx, xx - 10, yy - 10 - this.yOff * 5 * (this.inputSize), 40, 10 * (this.inputSize + 3));
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3484,7 +3484,7 @@ Tunnel.prototype.customDraw = function () {
 
     rect2(ctx, -120 + xRotate + this.xSize, -20 + yRotate, 120 - this.xSize, 40, xx, yy, "RIGHT");
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3576,7 +3576,7 @@ ALU.prototype.customDraw = function () {
     ctx.stroke();
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this))
-        ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
     ctx.stroke();
 
@@ -3724,7 +3724,7 @@ Rectangle.prototype.customDraw = function () {
     ctx.stroke();
 
     if (simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) {
-        ctx.fillStyle = "rgba(255, 255, 32,0.1)";
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
         ctx.fill();
     }
     ctx.setLineDash([])
@@ -3777,7 +3777,7 @@ Arrow.prototype.customDraw = function () {
     lineTo(ctx, -30, 3, xx, yy, this.direction);
     ctx.closePath()
     ctx.stroke();
-    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
+    if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementHover;
     ctx.fill();
 
 }
