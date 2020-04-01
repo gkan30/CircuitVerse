@@ -178,7 +178,7 @@ preferencesWindow = function(scope = globalScope) {
             text: "Save",
             click: function() {
                 $(this).dialog("close");
-                localStorage.setItem('Theme',JSON.stringify(Theme));
+                localStorage.setItem('theme',$('input[name=colorScheme]:checked').val());
                 localStorage.setItem('mapping',JSON.stringify(keyboardMapping));
             },
         }]
@@ -222,8 +222,8 @@ preferencesWindow = function(scope = globalScope) {
 
 
     $("input[name=colorScheme]").change(function() {
-       var colorScheme = $('input[name=colorScheme]:checked').val();
-       setTheme(colorScheme);
+
+       setTheme();
        dots(true,false,true);
 
 
@@ -231,39 +231,13 @@ preferencesWindow = function(scope = globalScope) {
 
 }
 
-setTheme = function(colorScheme=Theme.id){
-  Theme.id = colorScheme;
+setTheme = function(){
   var root = document.documentElement;
-  if(Theme.id == undefined){
-    Theme.id = 1;
-    Theme.fill = '#eee';
-    Theme.stroke = 'white';
+  var data = window[$('input[name=colorScheme]:checked').val()];
+  for (var key in data.css)
+  {
+     root.style.setProperty(key, data.css[key]);
   }
-
-  if(Theme.id == 1){
-    document.getElementById("Theme1").checked = true;
-    root.style.setProperty('--backgroundColor1', '#333');
-    root.style.setProperty('--backgroundColor2', '#444');
-    root.style.setProperty('--hoverColor', '#0099ff');
-    root.style.setProperty('--borderColor', '#0099ff');
-    root.style.setProperty('--titleColor', '#0099ff');
-    root.style.setProperty('--navbarColor', '#343A40');
-    Theme.fill = 'white';
-    Theme.stroke = '#eee';
-}else if(Theme.id ==2){
-  document.getElementById("Theme2").checked = true;
-  root.style.setProperty('--backgroundColor1', '#212121');
-  root.style.setProperty('--backgroundColor2', '#161616');
-  root.style.setProperty('--hoverColor', '#313131');
-  root.style.setProperty('--borderColor', '#161616');
-  root.style.setProperty('--titleColor', '#fff');
-  root.style.setProperty('--navbarColor', '#161616');
-  Theme.fill = '#161616';
-  Theme.stroke = '#212121';
-}
-
-
-  //root.style.setProperty('--backgroundColor1', '#fff');
 }
 
 // Function used to change the current focusedCircuit
@@ -387,6 +361,7 @@ function scheduleBackup(scope = globalScope) {
     var backup = JSON.stringify(backUp(scope));
     if (scope.backups.length == 0 || scope.backups[scope.backups.length - 1] != backup) {
         scope.backups.push(backup);
+        scope.foreups = []
         scope.timeStamp = new Date().getTime();
         projectSaved = false;
     }
