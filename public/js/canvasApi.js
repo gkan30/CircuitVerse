@@ -65,10 +65,7 @@ function dots(dots=true, transparentBackground=false,force=false) {
     document.getElementById("backgroundArea").style.top=(oy-scale)/DPR;
 
     if(globalScope.scale==simulationArea.prevScale && !force)return;
-
-
-
-
+    var data = window[$('input[name=colorScheme]:checked').val()];
 
     if(!backgroundArea.context)return;
         simulationArea.prevScale=globalScope.scale;
@@ -79,10 +76,10 @@ function dots(dots=true, transparentBackground=false,force=false) {
     var ctx = backgroundArea.context;
     ctx.beginPath();
     backgroundArea.clear();
-    ctx.strokeStyle=Theme.stroke;
+    ctx.strokeStyle=data.canvas.gridStroke;
     ctx.lineWidth=1;
     if (!transparentBackground) {
-        ctx.fillStyle = Theme.fill;
+        ctx.fillStyle = data.canvas.gridFill;
         ctx.rect(0, 0, canvasWidth, canvasHeight);
         ctx.fill();
     }
