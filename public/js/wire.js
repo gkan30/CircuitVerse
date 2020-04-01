@@ -73,7 +73,7 @@ Wire.prototype.update = function() {
         this.converge(n);
     }
     if (simulationArea.lastSelected == this) {
-        
+
     }
 
     if (this.node1.deleted || this.node2.deleted){
@@ -113,18 +113,18 @@ Wire.prototype.update = function() {
 Wire.prototype.draw = function() {
 
 // for calculating min-max Width,min-max Height
-
+    var data = window[$('input[name=colorScheme]:checked').val()];
     ctx = simulationArea.context;
 
     var color;
     if (simulationArea.lastSelected == this)
-        color = "blue";
+        color = data.canvas.wireSelected;
     else if (this.node1.value == undefined||this.node2.value == undefined)
-        color = "red";
+        color = data.canvas.wireError;
     else if (this.node1.bitWidth == 1)
-        color = ["red", "DarkGreen", "Lime"][this.node1.value + 1];
+        color = [data.canvas.wireError, data.canvas.wireLow, data.canvas.wireHigh][this.node1.value + 1];
     else
-        color = "black";
+        color = data.canvas.wireDrawing;
     drawLine(ctx, this.node1.absX(), this.node1.absY(), this.node2.absX(), this.node2.absY(), color, 3);
 
 }
