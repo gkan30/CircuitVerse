@@ -10,17 +10,19 @@ darkTheme = {
   "canvas": {
     "gridFill": "#161616",
     "gridStroke": "#212121",
+    "elementFill" : "#313131",
+    "elementStroke": "black",
      "elementHover": "rgba(255, 255, 32,0.8)",
-    "elementSelect": "",
+    "elementFeedback": "#bb000e",
     "indicationColor": "rgba(232, 13, 13,0.6)",
-    "wireHigh": "Lime",
-    "wireLow": "DarkGreen",
+    "wireHigh": "gold",
+    "wireLow": "yellow",
     "wireSelected": "blue",
     "wireDrawing": "black",
     "wireError": "red",
-    "minimapBorder" :"bbb",
-    "minimapFill" : "#ddd",
-    "minimapElementFill" : "DarkGreen",
+    "minimapBorder" :"#313131",
+    "minimapFill" : "#161616",
+    "minimapElementFill" : " #1DB954",
     "minimapElementStroke" :"green"
   }
 }
