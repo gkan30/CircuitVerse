@@ -1,0 +1,26 @@
+darkTheme = {
+  "css": {
+    "--backgroundColor1": "#212121",
+    "--backgroundColor2": "#161616",
+    "--hoverColor": "#313131",
+    "--borderColor": "#161616",
+    "--titleColor": "#ffffff",
+    "--navbarColor": "#161616"
+  },
+  "canvas": {
+    "gridFill": "#161616",
+    "gridStroke": "#212121",
+     "elementHover": "rgba(255, 255, 32,0.8)",
+    "elementSelect": "",
+    "indicationColor": "rgba(232, 13, 13,0.6)",
+    "wireHigh": "Lime",
+    "wireLow": "DarkGreen",
+    "wireSelected": "blue",
+    "wireDrawing": "black",
+    "wireError": "red",
+    "minimapBorder" :"bbb",
+    "minimapFill" : "#ddd",
+    "minimapElementFill" : "DarkGreen",
+    "minimapElementStroke" :"green"
+  }
+}

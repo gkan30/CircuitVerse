@@ -1,0 +1,26 @@
+yTheme = {
+  "css": {
+    "--backgroundColor1": "#333",
+    "--backgroundColor2": "#444",
+    "--hoverColor": "#0099ff",
+    "--borderColor": "#0099ff",
+    "--titleColor": "#0099ff",
+    "--navbarColor": "#343A40"
+  },
+  "canvas": {
+    "gridFill": "white",
+    "gridStroke": "#eee",
+    "elementHover": "rgba(255, 255, 32,0.8)",
+    "elementSelect": "",
+    "indicationColor": "rgba(232, 13, 13,0.6)",
+    "wireHigh": "Lime",
+    "wireLow": "DarkGreen",
+    "wireSelected": "blue",
+    "wireDrawing": "black",
+    "wireError": "red",
+    "minimapBorder" :"bbb",
+    "minimapFill" : "#ddd",
+    "minimapElementFill" : "DarkGreen",
+    "minimapElementStroke" :"green"
+  }
+}
