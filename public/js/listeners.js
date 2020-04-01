@@ -36,6 +36,7 @@ function startListeners() {
         e.preventDefault();
         scheduleBackup();
         scheduleUpdate(1);
+
         $('.dropdown.open').removeClass('open');
     });
     document.getElementById("simulationArea").addEventListener('mouseup', function(e) {
@@ -43,12 +44,13 @@ function startListeners() {
         /*
         handling restricted circuit elements
         */
-
+      
         if(simulationArea.lastSelected && restrictedElements.includes(simulationArea.lastSelected.objectType)
             && !globalScope.restrictedCircuitElementsUsed.includes(simulationArea.lastSelected.objectType)) {
             globalScope.restrictedCircuitElementsUsed.push(simulationArea.lastSelected.objectType);
             updateRestrictedElementsList();
         }
+
     });
     window.addEventListener('mousemove', onMouseMove);
 
@@ -200,7 +202,7 @@ function startListeners() {
                 simulationArea.lastSelected.newBitWidth(parseInt(prompt("Enter new bitWidth"), 10));
         }
         if (simulationArea.controlDown && (e.key == "T" || e.key == "t")) {
-            // e.preventDefault(); //browsers normally open a new tab
+            //e.preventDefault(); //browsers normally open a new tab
             simulationArea.changeClockTime(prompt("Enter Time:"));
         }
         if ((e.keyCode == 108 || e.keyCode == 76) && simulationArea.lastSelected != undefined) {
