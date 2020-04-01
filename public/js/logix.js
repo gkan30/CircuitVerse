@@ -1,4 +1,4 @@
-// Size of canvas
+window[$('input[name=colorScheme]:checked').val()].canvas.elementFill// Size of canvas
 var width;
 var height;
 
@@ -1279,8 +1279,8 @@ CircuitElement.prototype.draw = function() {
 
     // Draws rectangle and highlights
     if (this.rectangleObject) {
-        ctx.strokeStyle = "black";
-        ctx.fillStyle = "white";
+        ctx.strokeStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementStroke;
+        ctx.fillStyle = window[$('input[name=colorScheme]:checked').val()].canvas.elementFill;
         ctx.lineWidth = correctWidth(3);
         ctx.beginPath();
         rect2(ctx, -this.leftDimensionX, -this.upDimensionY, this.leftDimensionX + this.rightDimensionX, this.upDimensionY + this.downDimensionY, this.x, this.y, [this.direction, "RIGHT"][+this.directionFixed]);
@@ -1513,3 +1513,4 @@ CircuitElement.prototype.generateVerilog = function() {
 function distance(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 }
+window[$('input[name=colorScheme]:checked').val()].canvas.elementFill
