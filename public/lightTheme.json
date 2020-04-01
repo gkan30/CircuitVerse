@@ -10,8 +10,10 @@ lightTheme = {
   "canvas": {
     "gridFill": "white",
     "gridStroke": "#eee",
+     "elementFill" : "white",
+    "elementStroke": "black",
     "elementHover": "rgba(255, 255, 32,0.8)",
-    "elementSelect": "",
+    "elementFeedback": "#bb000e",
     "indicationColor": "rgba(232, 13, 13,0.6)",
     "wireHigh": "Lime",
     "wireLow": "DarkGreen",
